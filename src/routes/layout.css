@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* ===== Fonts (self-hosted via @fontsource, offline-safe) ===== */
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/* ===== Arhamy OS — "Mission Control" design tokens =====
+   Dark technical control-plane with a single teal accent. */
+@theme {
+	--font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+	--font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+	--color-bg: #0a0e14;
+	--color-surface: #11161f;
+	--color-ink: #e6edf3;
+	--color-teal: #34d399;
+	--color-amber: #fbbf24;
+}
+
+:root {
+	--bg: #0a0e14;
+	--bg-2: #0d1117;
+	--surface: #11161f;
+	--surface-2: #161c26;
+	--surface-3: #1c2430;
+
+	--ink: #e6edf3;
+	--muted: #8b949e;
+	--faint: #5b6571;
+
+	--teal: #34d399;
+	--teal-2: #5eead4;
+	--teal-dim: #1f6f57;
+	--amber: #fbbf24;
+	--danger: #f87171;
+
+	--line: rgba(255, 255, 255, 0.08);
+	--line-strong: rgba(255, 255, 255, 0.14);
+
+	--shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 8px 24px rgba(0, 0, 0, 0.45);
+	--shadow-pop: 0 24px 70px rgba(0, 0, 0, 0.6);
+	--teal-glow: 0 0 18px rgba(52, 211, 153, 0.35);
+	--radius: 14px;
+}
+
+html {
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--font-body);
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background:
+		radial-gradient(1100px 700px at 78% -8%, #122031 0%, transparent 58%),
+		radial-gradient(900px 700px at -8% 108%, #0e1a18 0%, transparent 55%),
+		var(--bg);
+}
+
+/* Accent focus ring (keyboard) */
+:where(a, button, input, [tabindex], [role='button']):focus-visible {
+	outline: 2px solid var(--teal);
+	outline-offset: 3px;
+	border-radius: 10px;
+}
+
+/* Reusable technical card */
+.mc-card {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+		var(--surface);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
