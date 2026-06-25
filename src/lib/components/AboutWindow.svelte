@@ -52,6 +52,26 @@
 			</ul>
 		</section>
 
+		<section class="block">
+			<h4 class="block-title"><span class="prompt">$</span> experience</h4>
+			<div class="experience">
+				{#each profile.experience as exp (exp.role + exp.company)}
+					<article class="exp">
+						<header class="exp-head">
+							<span class="exp-role">{exp.role}</span>
+							<span class="exp-company">@ {exp.company}</span>
+							{#if exp.period}<span class="exp-period">{exp.period}</span>{/if}
+						</header>
+						<ul class="exp-points">
+							{#each exp.points as p (p)}
+								<li>{p}</li>
+							{/each}
+						</ul>
+					</article>
+				{/each}
+			</div>
+		</section>
+
 		<div class="footer-dl"><DownloadCV /></div>
 	</div>
 </Window>
@@ -168,6 +188,72 @@
 	}
 	.achievements li::before {
 		content: '▹';
+		position: absolute;
+		left: 2px;
+		color: var(--teal);
+	}
+
+	.experience {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	.exp {
+		position: relative;
+		padding-left: 16px;
+		border-left: 2px solid var(--line-strong);
+	}
+	.exp::before {
+		content: '';
+		position: absolute;
+		left: -5px;
+		top: 5px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--teal);
+		box-shadow: var(--teal-glow);
+	}
+	.exp-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 6px 10px;
+		margin-bottom: 8px;
+	}
+	.exp-role {
+		font-family: var(--font-display);
+		font-size: 14.5px;
+		font-weight: 600;
+		color: var(--ink);
+	}
+	.exp-company {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		color: var(--teal);
+	}
+	.exp-period {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--muted);
+	}
+	.exp-points {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+	}
+	.exp-points li {
+		position: relative;
+		padding-left: 16px;
+		font-size: 13px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+	.exp-points li::before {
+		content: '–';
 		position: absolute;
 		left: 2px;
 		color: var(--teal);

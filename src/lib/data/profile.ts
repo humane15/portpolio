@@ -27,6 +27,13 @@ export type SkillGroup = {
 	items: string[];
 };
 
+export type Experience = {
+	role: string;
+	company: string;
+	period?: string;
+	points: string[];
+};
+
 export const profile = {
 	name: 'Muhammad Ulul Arhamy',
 	displayName: ['MUHAMMAD', 'ULUL ARHAMY'],
@@ -113,6 +120,19 @@ export const profile = {
 		'Deploy & maintain produksi di VPS (Nginx + PM2 + SSL)'
 	],
 
+	experience: [
+		{
+			role: 'Junior Web Programmer',
+			company: 'PT Kreya',
+			period: '',
+			points: [
+				'Memelihara dan memperbarui website perusahaan yang berjalan di lingkungan production, memastikan situs tetap stabil dan berfungsi.',
+				'Melakukan pembaruan konten dan perbaikan berkala (bug fixing, penyesuaian fitur) pada codebase yang sudah berjalan.',
+				'Memantau keamanan website secara berkelanjutan — memeriksa potensi kerentanan, memastikan praktik keamanan web terjaga, dan menjaga integritas situs production.'
+			]
+		}
+	] satisfies Experience[],
+
 	dockApps: [
 		{ id: 'about', name: 'About', icon: 'about' },
 		{ id: 'projects', name: 'Projects', icon: 'projects' },
@@ -152,6 +172,21 @@ export const profile = {
 			description:
 				'Backend manajemen stok dengan Hono + Drizzle ORM (SQLite/PostgreSQL): tabel kategori, item, dan transaksi stok dengan transaksi atomik serta validasi Zod.',
 			tags: ['Hono', 'Drizzle ORM', 'TypeScript', 'Zod', 'PostgreSQL']
+		},
+		{
+			title: 'Web Portfolio — Arhamy OS',
+			period: 'Frontend · Desktop-OS UI',
+			description:
+				'Portofolio pribadi yang dirancang sebagai sistem operasi desktop ("Arhamy OS · Mission Control"): top bar ala GNOME, dock aplikasi melayang, window manager in-site (focus trap + Esc), dashboard widget data hidup, dan kursor kustom. Dibangun dengan SvelteKit + Svelte 5 (runes) dan TailwindCSS — responsif dan aksesibel.',
+			tags: ['SvelteKit', 'Svelte 5', 'TypeScript', 'TailwindCSS', 'Vite'],
+			links: [{ label: 'GitHub', url: 'https://github.com/humane15' }]
+		},
+		{
+			title: 'SOC Lab on AWS',
+			period: 'Cybersecurity · Cloud',
+			description:
+				'Lab Security Operations Center (SOC) yang dibangun di AWS: instans EC2 di dalam VPC sebagai sumber log, pengumpulan & sentralisasi log ke SIEM, deteksi ancaman dan pemantauan keamanan (alerting), serta hardening Linux. Latihan analisis insiden, threat hunting, dan respons di lingkungan cloud.',
+			tags: ['AWS', 'EC2', 'VPC', 'SIEM', 'SOC', 'Linux', 'Security']
 		}
 	] satisfies Project[]
 };
